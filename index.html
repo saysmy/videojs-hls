@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="wap-font-scale" content="no">
 	<title>videojs支持hls直播实例</title>
 	<link href="./video.css?v=bcd2ce1385" rel="stylesheet">
+
+	<style type="text/css">
+	    video{
+	            display: block;
+	            width: 100%;
+	            height: auto;
+	            border: 1px solid;
+	    }
+	    button{
+	            width: 150px;
+	            height: 50px;
+	            line-height: 50px;
+	            text-align: center;
+	            margin:30px auto;
+	            display: block;
+	    }
+	</style>
 </head>
 <body>
 
 	<video id="roomVideo" class="video-js vjs-default-skin vjs-big-play-centered" x-webkit-airplay="allow" poster="" webkit-playsinline playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto">
 	    <source src="/chat/playlist.m3u8"  type="application/x-mpegURL">
 	</video>
+
+	<button id="btn">play</button>
 
 	<script src="./video.js?v=fc5104a2ab23"></script>
 	<script src="./videojs-contrib-hls.js?v=c726b94b9923"></script>
@@ -60,6 +86,11 @@
 	        })
 
 	    });
+	    
+	    document.getElementById('btn').addEventListener('click', function(){
+                myPlayer.play();
+        })
+
 
 	    var isVideoBreak;
 	    function startVideo() {
